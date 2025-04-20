@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug: start",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "poetry",
+            "args": [
+                "run",
+                "geo-activity-playground",
+                "--basedir",
+                "/home/waeller/Data/geo-activity-playground",
+                "serve"
+            ],
+            "justMyCode": false
+        }
+    ]
+}
