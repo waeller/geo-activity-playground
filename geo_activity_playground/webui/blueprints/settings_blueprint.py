@@ -160,11 +160,11 @@ def make_settings_blueprint(
             assert len(ids) == len(names) == len(offsets)
             for id, name, offset in zip(ids, names, offsets):
                 if id:
-                    equipment = DB.session.get(Equipment, int(id))
+                    equipment = DB.session.get_one(Equipment, int(id))
                     equipment.name = name
                     equipment.offset_km = int(float(offset))
                 if not id and name:
-                    equipment = Equipment(name)
+                    equipment = Equipment(name=name)
                     if offset:
                         equipment.offset_km = int(float(offset))
                     DB.session.add(equipment)
@@ -193,11 +193,11 @@ def make_settings_blueprint(
             assert len(ids) == len(names)
             for id, name in zip(ids, names):
                 if id:
-                    kind = DB.session.get(Kind, int(id))
+                    kind = DB.session.get_one(Kind, int(id))
                     kind.name = name
                     kind.consider_for_achievements = id in consider_for_achievements
                 if not id and name:
-                    kind = Kind(name)
+                    kind = Kind(name=name)
                     if consider_for_achievements:
                         kind.consider_for_achievements = (
                             "new" in consider_for_achievements
